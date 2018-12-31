@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="py-4 main">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">Register</div>
+            <div class="card-body">
+              <form (submit)="onUserRegister($event)">
+                <div class="form-group row"><label for="text" class="col-sm-4 col-form-label text-md-right">Name</label>
+                  <div class="col-md-6">
+                    <input id="name" type="text" name="name" autofocus="autofocus" class="form-control" ngModel="name">
+                    <span role="alert" class="invalid-feedback"><strong>The name field is required.</strong></span></div>
+                </div>
+                <div class="form-group row"><label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
+                  <div class="col-md-6"><input id="email" type="email" name="email" class="form-control" ngModel="email">
+                    <span role="alert" class="invalid-feedback"><strong>The email field is required.</strong></span></div>
+                </div>
+                <div class="form-group row"><label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>
+                  <div class="col-md-6"><input id="password" type="password" name="password" class="form-control is-invalid"
+                      ngModel="password">
+                    <span role="alert" class="invalid-feedback"><strong>The password field is required.</strong></span></div>
+                </div>
+                <div class="form-group row"><label for="password_confirmation" class="col-sm-4 col-form-label text-md-right">Password
+                    Confirmation</label>
+                  <div class="col-md-6"><input id="password_confirmation" type="password" name="password_confirmation"
+                      class="form-control is-invalid" ngModel="password_confirmation"> <span role="alert" class="invalid-feedback"><strong>The
+                        password
+                        confirmation field is required.</strong></span></div>
+                </div>
+                <div class="form-group row mb-0">
+                  <div class="col-md-8 offset-md-4"><button type="submit" class="btn btn-primary">
+                      Register
+                    </button></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

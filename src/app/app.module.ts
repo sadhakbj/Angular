@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,13 +12,12 @@ import { RegisterComponent } from './views/register/register.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { FormService } from './services/form/form.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-];
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -32,12 +30,17 @@ const appRoutes: Routes = [
     ProfileComponent
   ],
   imports: [
+    FormsModule,
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      progressBar: true
+    })
   ],
   providers: [AuthService, FormService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

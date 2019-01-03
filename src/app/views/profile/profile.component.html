@@ -1,3 +1,23 @@
-<p>
-  profile works!
-</p>
+<app-container>
+  <div class="col-md-8">
+    <app-card>
+      <div title>Current User</div>
+      <div body>
+        <table class="table">
+          <tr>
+            <td>Name</td>
+            <td>{{ currentUser.name }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ currentUser.email }}</td>
+          </tr>
+          <tr>
+            <td>Joined on</td>
+            <td>{{ currentUser.created_at }}</td>
+          </tr>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</app-container>

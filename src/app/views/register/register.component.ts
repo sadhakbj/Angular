@@ -1,8 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormService } from './../../services/form/form.service';
 import { AuthService } from './../../services/auth.service';
 
-import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
 
   /**
    * RegisterComponent constructor
-   * @param authService
-   * @param toastr
+   * @param AuthService authService
+   * @param ToastrService toastr
    */
   constructor(
     private authService: AuthService,
@@ -27,18 +27,21 @@ export class RegisterComponent implements OnInit {
     this.form = new FormService();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/profile']);
+    }
+  }
 
   /**
    * Handle user register.
    * @param $event
    */
   onUserRegister($event) {
-    $event.preventDefault();
+    // $event.preventDefault();
 
     this.authService.registerUser(this.user).subscribe(
       response => {
-        console.log(response);
         this.router.navigate(['/login']);
         this.toastr.success('Success.', 'Sucessfully created a new account');
       },

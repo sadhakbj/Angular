@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a href="/" class="navbar-brand router-link-exact-active active"
-      >My Angular app</a
-    >
+    <a href="/" class="navbar-brand router-link-exact-active active">{{
+      appName
+    }}</a>
     <button
       type="button"
       data-toggle="collapse"
@@ -16,19 +16,26 @@
     </button>
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav">
-        <li><a routerLink="/users" class="nav-link">Users</a></li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a routerLink="/users" *ngIf="authService.isLoggedIn" class="nav-link"
+            >Users</a
+          >
+        </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li>
+        <li *ngIf="!authService.isLoggedIn()">
           <a routerLink="/login" class="nav-link" routerLinkActive="active"
             >Login</a
           >
         </li>
-        <li>
+        <li *ngIf="!authService.isLoggedIn()">
           <a routerLink="/register" class="nav-link" routerLinkActive="active"
             >Register</a
           >
+        </li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a href="#" (click)="handleLogOut()" class="nav-link">Log Out</a>
         </li>
       </ul>
     </div>

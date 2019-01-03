@@ -1,3 +1,84 @@
-<p>
-  login works!
-</p>
+<app-container>
+  <div class="col-md-8">
+    <app-card>
+      <div title>Login</div>
+      <div body>
+        <form (submit)="handleLogin($event)">
+          <div class="form-group row">
+            <label for="email" class="col-sm-4 col-form-label text-md-right"
+              >Email</label
+            >
+
+            <div class="col-md-6">
+              <input
+                id="email"
+                type="email"
+                [(ngModel)]="user.email"
+                class="form-control"
+                [class.is-invalid]="form.hasError('email')"
+                name="email"
+                autofocus
+                autocomplete="off"
+              />
+              <span
+                *ngIf="form.hasError('email')"
+                class="invalid-feedback"
+                role="alert"
+              >
+                <strong>{{ form.getError('email') }}</strong>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="password" class="col-sm-4 col-form-label text-md-right"
+              >Password</label
+            >
+
+            <div class="col-md-6">
+              <input
+                id="password"
+                type="password"
+                [(ngModel)]="user.password"
+                class="form-control"
+                [class.is-invalid]="form.hasError('password')"
+                name="password"
+                autocomplete="off"
+              />
+              <span
+                *ngIf="form.hasError('password')"
+                class="invalid-feedback"
+                role="alert"
+              >
+                <strong>{{ form.getError('password') }}</strong>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-6 offset-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="remember"
+                  id="remember"
+                />
+
+                <label class="form-check-label" for="remember">
+                  Remember me
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row mb-0">
+            <div class="col-md-8 offset-md-4">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </app-card>
+  </div>
+</app-container>

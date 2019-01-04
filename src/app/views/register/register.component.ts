@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   user: Object = {};
+  submitting: Boolean = false;
   form;
 
   /**
@@ -37,8 +38,8 @@ export class RegisterComponent implements OnInit {
    * Handle user register.
    * @param $event
    */
-  onUserRegister($event) {
-    // $event.preventDefault();
+  onUserRegister() {
+    this.submitting = true;
 
     this.authService.registerUser(this.user).subscribe(
       response => {
@@ -46,6 +47,9 @@ export class RegisterComponent implements OnInit {
         this.toastr.success('Success.', 'Sucessfully created a new account');
       },
       err => {
+        setTimeout(() => {
+          this.submitting = false;
+        }, 500);
         let message = 'Something is wrong';
         if (err.status === 422) {
           this.form.record(err.error.errors);

@@ -1,5 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { AuthorService } from './services/author/author.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,8 @@ import { CardComponent } from './component/card/card/card.component';
 import { ContainerComponent } from './component/container/container.component';
 import { AuthGuard } from './guard/auth.guard';
 import { InterceptorService } from './services/interceptor.service';
+import { CreateAuthorComponent } from './views/authors/create-author/create-author.component';
+import { AllAuthorsComponent } from './views/authors/all-authors/all-authors.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { InterceptorService } from './services/interceptor.service';
     DashboardComponent,
     ProfileComponent,
     CardComponent,
-    ContainerComponent
+    ContainerComponent,
+    CreateAuthorComponent,
+    AllAuthorsComponent
   ],
   imports: [
     FormsModule,
@@ -46,6 +51,7 @@ import { InterceptorService } from './services/interceptor.service';
   ],
   providers: [
     AuthService,
+    AuthorService,
     FormService,
     AuthGuard,
     {

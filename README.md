@@ -1,4 +1,8 @@
-# AngularApp
+# ngBook - Angular SPA with Laravel backend
+
+Creating the same app in Vue and Laravel.
+
+The vue version with api can be found [here](https://github.com/sadhakbj/Laravel-vue-spa-vuex)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 

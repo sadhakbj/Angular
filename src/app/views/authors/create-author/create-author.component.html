@@ -2,9 +2,9 @@
   <div class="col-md-8">
     <div id="loader" *ngIf="submitting"></div>
     <app-card>
-      <div title>Create new booker account</div>
+      <div title>Add new author</div>
       <div body>
-        <form (submit)="onUserRegister()">
+        <form (submit)="onUserCreate($event)">
           <div class="form-group row">
             <label for="text" class="col-sm-4 col-form-label text-md-right"
               >Name</label
@@ -16,7 +16,7 @@
                 name="name"
                 autofocus="autofocus"
                 class="form-control"
-                [(ngModel)]="user.name"
+                [(ngModel)]="author.name"
                 [class.is-invalid]="form.hasError('name')"
               />
               <span
@@ -38,7 +38,7 @@
                 name="email"
                 class="form-control"
                 [class.is-invalid]="form.hasError('email')"
-                [(ngModel)]="user.email"
+                [(ngModel)]="author.email"
               />
 
               <span
@@ -50,48 +50,67 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="password" class="col-sm-4 col-form-label text-md-right"
-              >Password</label
+            <label for="address" class="col-sm-4 col-form-label text-md-right"
+              >Address</label
             >
             <div class="col-md-6">
               <input
-                id="password"
-                type="password"
-                name="password"
+                id="address"
+                type="text"
+                name="address"
                 class="form-control"
-                [class.is-invalid]="form.hasError('password')"
-                [(ngModel)]="user.password"
+                [class.is-invalid]="form.hasError('address')"
+                [(ngModel)]="author.address"
               />
               <span role="alert" class="invalid-feedback"
-                ><strong>{{ form.getError('password') }}</strong></span
+                ><strong>{{ form.getError('address') }}</strong></span
               >
             </div>
           </div>
           <div class="form-group row">
-            <label
-              for="password_confirmation"
-              class="col-sm-4 col-form-label text-md-right"
-              >Password Confirmation</label
+            <label for="info" class="col-sm-4 col-form-label text-md-right"
+              >Information</label
             >
             <div class="col-md-6">
-              <input
-                id="password_confirmation"
-                type="password"
-                name="password_confirmation"
+              <textarea
+                id="info"
+                name="info"
                 class="form-control"
-                [class.is-invalid]="form.hasError('password_confirmation')"
-                [(ngModel)]="user.password_confirmation"
-              />
+                [class.is-invalid]="form.hasError('info')"
+                [(ngModel)]="author.info"
+              >
+              </textarea>
               <span role="alert" class="invalid-feedback"
-                ><strong>{{
-                  form.getError('password_confirmation')
-                }}</strong></span
+                ><strong>{{ form.getError('info') }}</strong></span
               >
             </div>
           </div>
+          <div class="form-group row">
+            <label for="image" class="col-sm-4 col-form-label text-md-right"
+              >Image</label
+            >
+            <div class="col-md-6">
+              <input
+                type="file"
+                name="image"
+                id="image"
+                (change)="handleFileChange($event)"
+              />
+              <span role="alert" class="invalid-feedback"
+                ><strong>{{ form.getError('image') }}</strong></span
+              >
+            </div>
+          </div>
+
           <div class="form-group row mb-0">
             <div class="col-md-8 offset-md-4">
-              <button type="submit" class="btn btn-primary">Register</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="submitting"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>

@@ -29,9 +29,11 @@ export class NavbarComponent implements OnInit {
    * @return false
    */
   handleLogOut() {
-    this.authService.logOut();
-    this.router.navigate(['/login']);
-    this.toastr.success('Success', 'Logged out successfully.');
+    this.authService.logOut().subscribe(response => {
+      this.authService.removeUserFromLocalStorage();
+      this.router.navigate(['/login']);
+      this.toastr.success('Success', 'Logged out successfully.');
+    });
 
     return false;
   }

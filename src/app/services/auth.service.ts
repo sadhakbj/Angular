@@ -17,9 +17,6 @@ export class AuthService {
    * @param Object userData
    */
   registerUser(userData) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-
     return this.http.post(`${environment.apiUrl}/auth/register`, userData);
   }
 
@@ -35,7 +32,7 @@ export class AuthService {
    * Get the current user from the backend.
    */
   getCurrentUser() {
-    return this.http.get(`${environment.apiUrl}/user`);
+    return this.http.get(`${environment.apiUrl}/auth/current-user`);
   }
 
   /**
@@ -54,9 +51,16 @@ export class AuthService {
   }
 
   /**
-   * Remove the token and user from localstorage.
+   * Perform http delete request to log out.
    */
   logOut() {
+    return this.http.delete(`${environment.apiUrl}/auth/logout`);
+  }
+
+  /**
+   * Removes the user and token stored in the local storage.
+   */
+  removeUserFromLocalStorage() {
     this.userToken = null;
     this.currentUser = null;
     localStorage.removeItem('user');

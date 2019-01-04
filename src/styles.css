@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+.main {
+  margin-top: 80px;
+}
+
+.bg-dark {
+  background-color: #2d445a !important;
+}
+
 #toast-container > div {
-    opacity:1;
+  opacity: 1;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: #f8fafc;
 }
